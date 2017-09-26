@@ -25,12 +25,12 @@
 	</properties>
 
 	<dependencies>
-		<!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-		</dependency>-->
+		<!--spring-boot的默认依赖是2.x版本 不符合我我们的要求 故替换为该版本-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
+		<!--</dependency>-->
 		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
-		<!--springboot的默认依赖是2.x版本 不符合我我们的要求 故替换为该版本-->
 		<dependency>
 			<groupId>org.elasticsearch.client</groupId>
 			<artifactId>transport</artifactId>
@@ -44,6 +44,26 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+		<!--字符串操作工具类-->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<!--添加此依赖解决缺少log4j的错误信息-->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch-->
+		<!--解决-->
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>5.6.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
