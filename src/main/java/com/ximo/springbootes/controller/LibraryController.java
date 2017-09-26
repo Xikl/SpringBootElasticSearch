@@ -20,7 +20,6 @@ public class LibraryController {
 
     @GetMapping("/get/book/novel/{id}")
     public Result get(@PathVariable("id") String id){
-
         return ResultUtils.success(libraryService.get(id));
     }
 

@@ -19,7 +19,11 @@ public class LibraryServiceImpl implements LibraryService {
     @Autowired
     private TransportClient client;
 
-
+    /**
+     * 根据id查询方法
+     * @param id
+     * @return
+     */
     @Override
     public GetResponse get(String id) {
         this.checkId(id);
