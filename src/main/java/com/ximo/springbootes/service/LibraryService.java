@@ -1,5 +1,7 @@
 package com.ximo.springbootes.service;
 
+import com.ximo.springbootes.domain.Novel;
+
 import java.util.Map;
 
 /**
@@ -10,5 +12,7 @@ import java.util.Map;
 public interface LibraryService {
 
     Map<String, Object> get(String id);
+
+    Map<String, Object> add(Novel novel);
 
 }
