@@ -30,6 +30,7 @@
 			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 		</dependency>-->
 		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
+		<!--springboot的默认依赖是2.x版本 不符合我我们的要求 故替换为该版本-->
 		<dependency>
 			<groupId>org.elasticsearch.client</groupId>
 			<artifactId>transport</artifactId>
