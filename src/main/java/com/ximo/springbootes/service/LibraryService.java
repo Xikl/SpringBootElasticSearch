@@ -1,6 +1,6 @@
 package com.ximo.springbootes.service;
 
-import org.elasticsearch.action.get.GetResponse;
+import java.util.Map;
 
 /**
  * 图书馆服务类
@@ -9,6 +9,6 @@ import org.elasticsearch.action.get.GetResponse;
  */
 public interface LibraryService {
 
-    GetResponse get(String id);
+    Map<String, Object> get(String id);
 
 }

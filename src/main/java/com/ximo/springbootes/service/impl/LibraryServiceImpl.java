@@ -9,6 +9,8 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  * Created by 朱文赵
  * 2017/9/26
@@ -25,13 +27,13 @@ public class LibraryServiceImpl implements LibraryService {
      * @return
      */
     @Override
-    public GetResponse get(String id) {
+    public Map<String, Object> get(String id) {
         this.checkId(id);
         GetResponse result = client.prepareGet("book", "novel", id).get();
-        if(result.isExists()){
+        if( !result.isExists()){
             throw new LibraryException(ResultEnums.NOVEL_NOT_EXIST);
         }
-        return result;
+        return result.getSource();
     }
 
     /**
