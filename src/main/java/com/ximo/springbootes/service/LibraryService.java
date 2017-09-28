@@ -15,4 +15,6 @@ public interface LibraryService {
 
     Map<String, Object> add(Novel novel);
 
+    void delete(String id);
+
 }

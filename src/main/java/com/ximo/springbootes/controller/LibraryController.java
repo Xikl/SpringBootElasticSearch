@@ -38,5 +38,12 @@ public class LibraryController {
         return ResultUtils.success(libraryService.add(novel));
     }
 
+    @DeleteMapping("/delete/{id}")
+    public Result delete(@PathVariable("id") String id){
+        libraryService.delete(id);
+        return ResultUtils.success();
+    }
+
+
 
 }

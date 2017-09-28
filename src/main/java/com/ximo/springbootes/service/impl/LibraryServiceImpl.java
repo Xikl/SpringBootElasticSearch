@@ -6,6 +6,7 @@ import com.ximo.springbootes.exception.LibraryException;
 import com.ximo.springbootes.service.LibraryService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.transport.TransportClient;
@@ -74,6 +75,17 @@ public class LibraryServiceImpl implements LibraryService {
             log.error("【添加novel】 io错误， novel={}, e={}", novel, e);
             throw new LibraryException(ResultEnums.UNKNOWN_ERROR);
         }
+    }
+
+    /**
+     * 删除方法
+     * @param id 文档的id
+     */
+    @Override
+    public void delete(String id) {
+        this.checkId(id);
+        DeleteResponse result = this.client.prepareDelete("book", "novel", id)
+                .get();
     }
 
     /**
