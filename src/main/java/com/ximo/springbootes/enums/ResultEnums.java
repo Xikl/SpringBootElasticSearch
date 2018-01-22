@@ -17,6 +17,8 @@ public enum ResultEnums {
     SUCCESS(0, "成功"),
     ID_IS_BLANK(10, "id为空"),
     NOVEL_NOT_EXIST(404, "该小说不存在"),
+    UPDATE_ERROR(11, "更新book错误"),
+    FORM_VALIDATION_ERROR(12, "表单验证错误"),
     ;
 
     private Integer code;

@@ -1,6 +1,6 @@
 package com.ximo.springbootes.service;
 
-import com.ximo.springbootes.domain.Novel;
+import com.ximo.springbootes.form.Novel;
 
 import java.util.Map;
 
@@ -16,5 +16,7 @@ public interface LibraryService {
     Map<String, Object> add(Novel novel);
 
     void delete(String id);
+
+    void update(String id, Novel novel);
 
 }

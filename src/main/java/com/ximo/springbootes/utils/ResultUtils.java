@@ -45,5 +45,9 @@ public class ResultUtils {
         return new Result(resultEnums.getCode(), resultEnums.getMsg(), null);
     }
 
+    public static Result error(ResultEnums resultEnums, Object o){
+        return new Result(resultEnums.getCode(), resultEnums.getMsg(), o);
+    }
+
 
 }

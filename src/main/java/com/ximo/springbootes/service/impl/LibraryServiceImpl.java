@@ -1,6 +1,6 @@
 package com.ximo.springbootes.service.impl;
 
-import com.ximo.springbootes.domain.Novel;
+import com.ximo.springbootes.form.Novel;
 import com.ximo.springbootes.enums.ResultEnums;
 import com.ximo.springbootes.exception.LibraryException;
 import com.ximo.springbootes.service.LibraryService;
@@ -9,8 +9,8 @@ import org.apache.commons.lang.StringUtils;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.xcontent.XContent;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +86,33 @@ public class LibraryServiceImpl implements LibraryService {
         this.checkId(id);
         DeleteResponse result = this.client.prepareDelete("book", "novel", id)
                 .get();
+    }
+
+    /**
+     * 更新操作
+     * @param id
+     * @param novel
+     */
+    @Override
+    public void update(String id, Novel novel){
+        UpdateRequest update = new UpdateRequest("novel", "book", id);
+        try {
+            //构建json数据
+            XContentBuilder builder = XContentFactory.jsonBuilder().
+                    startObject()
+                    .field("title", novel.getTitle())
+                    .field("author", novel.getAuthor())
+                    .field("word_count", novel.getWordCount())
+                    .field("publish_date", novel.getPublishDate().getTime())
+                    .endObject();
+            //构建builder
+            update.doc(builder);
+            //执行更新
+            this.client.update(update).get();
+        } catch (Exception e) {
+            log.error("【更新novel】 更新失败， id={}, novel={}, e={}", id, novel, e);
+            throw new LibraryException(ResultEnums.UPDATE_ERROR);
+        }
     }
 
     /**
